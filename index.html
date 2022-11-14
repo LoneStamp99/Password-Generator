@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="pass">
+    <input id="password" type="text" disabled>
+    <br>
+    <label for="Length">Your Password Length</label>
+    <input type="number" value="6">
+    <br>
+    <label for="Uppercase">Uppercase</label>
+    <input type="checkbox">
+
+    <br>
+    <label for="Lowercase">Lowercase</label>
+    <input type="checkbox">
+    <br>
+    <label for="Number">Number</label>
+    <input type="checkbox">
+    <br>
+    <label for="Symble">Symble</label>
+    <input type="checkbox">
+    <br>
+    <div id="submit">Generate</div>
+  </div>
+
+  <script>
+    let pass = document.getElementById('password');
+    let length = document.getElementsByTagName('input')[1];
+    let upperCase = document.getElementsByTagName('input')[2];
+    let lowerCase = document.getElementsByTagName('input')[3];
+    let number = document.getElementsByTagName('input')[4];
+    let symble = document.getElementsByTagName('input')[5];
+    let submit = document.getElementById('submit');
+
+    let upperArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    let lowerArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    let numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    let symbleArr = ['~', '@', '#', '$', '_', '&', '*', '+', '?', '£', '¢', '¥', '%', '©', '®', '™', '✓', '∆', '√', 'π', '¶'];
+
+    let upper;
+    let lower;
+    let numbers;
+    let symbles;
+    let passLength;
+    setInterval(time, 100);
+
+    function time() {
+      passLength = length.value;
+
+
+    }
+    submit.addEventListener('click', function() {
+
+
+      let i = 0;
+      pass.value = '';
+      while (i < passLength) {
+
+        if (upperCase.checked && i < passLength) {
+          upper = upperArr[Math.floor(Math.random() * upperArr.length)];
+          pass.value += upper;
+          i++;
+        }
+        if (lowerCase.checked && i < passLength) {
+          lower = lowerArr[Math.floor(Math.random() * lowerArr.length)];
+          pass.value += lower;
+          i++;
+        }
+        if (number.checked && i < passLength) {
+          numbers = numberArr[Math.floor(Math.random() * numberArr.length)];
+          pass.value += numbers;
+          i++;
+        }
+        if (symble.checked && i < passLength) {
+          symbles = symbleArr[Math.floor(Math.random() * symbleArr.length)];
+          pass.value += symbles;
+          i++;
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
